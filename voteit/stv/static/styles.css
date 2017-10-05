@@ -1,0 +1,6 @@
+.sortable-container {
+    /*border: 1px solid #ccc;*/
+    min-height: 20px;
+    background-color: #eee;
+    padding: 3px !important;
+}

@@ -1,0 +1,46 @@
+<div tal:define="css_class css_class|field.widget.css_class;
+                 style style|field.widget.style;
+                 oid oid|field.oid;">
+  <div class="row">
+    <div  class="col-sm-6">
+      Selected
+
+      ${field.start_sequence()}
+      <ul id="${oid}-sortable-picked" class="list-group ${oid}-connectedSortable sortable-container">
+        <li class="list-group-item" tal:repeat="choice cstruct">
+          <tal:def tal:define="prop prop_dict[choice];">
+            ${prop.aid}
+            <input type="hidden" name="selected" id="${oid}-${choice}" value="${choice}" />
+          </tal:def>
+        </li>
+      </ul>
+      ${field.end_sequence()}
+    </div>
+
+    <div class="col-sm-6">
+      Pool
+      <ul id="${oid}-sortable-pool" class="list-group ${oid}-connectedSortable sortable-container">
+        <li class="list-group-item" tal:repeat="choice pool">
+          <tal:def tal:define="prop prop_dict[choice]">
+            ${prop.aid}
+            <input type="hidden" name="pool-item" id="${oid}-${choice}" value="${choice}" />
+          </tal:def>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+  <script type="text/javascript">
+   deform.addCallback(
+   '${field.oid}',
+   function(oid) {
+      $( "#${oid}-sortable-picked, #${oid}-sortable-pool" ).sortable({
+        connectWith: ".${oid}-connectedSortable"
+      }).disableSelection();
+     }
+   );
+
+
+  </script>
+</div>
