@@ -7,4 +7,5 @@ STV Polls for VoteIT
 This is a plugin package for VoteIT that provides functionality
 for Single transferable vote polls.
 
-You can read more about the Schulze method here: `<https://en.wikipedia.org/wiki/Single_transferable_vote>`_
+
+NOTE! This package isn't finished yet, don't use it!
