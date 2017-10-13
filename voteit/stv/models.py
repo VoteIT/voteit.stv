@@ -1,14 +1,19 @@
 from BTrees.OOBTree import OOBTree
 from pyramid.renderers import render
+from stvpoll.exceptions import STVException
+from typing import List
+
 from voteit.core.models.poll_plugin import PollPlugin
 from pyvotecore.stv import STV
+from stvpoll.scottish_stv import ScottishSTV
+from stvpoll.cpo_stv import CPO_STV
 
 from voteit.stv import _
 from voteit.stv.schemas import SettingsSchema
 from voteit.stv.schemas import STVPollSchema
 
 
-class STVPoll(PollPlugin):
+class ScottishSTVPoll(PollPlugin):
     name = 'stv'
     title = _(u"Single transferable vote")
     description = _("")
@@ -21,20 +26,30 @@ class STVPoll(PollPlugin):
         return schema
 
     def format_ballots(self):
+        # type: () -> List[dict]
         formatted = []
         for (ballot, count) in self.context.ballots:
-            formatted.append({'count':count, 'ballot':list(ballot['proposals'])})
+            formatted.append({
+                'count': count,
+                'ballot': list(ballot['proposals'])
+            })
         return formatted
 
     def handle_close(self):
         ballots = self.format_ballots()
-        if ballots:
-            winners = self.context.poll_settings.get('winners', 1)
-            results = STV(ballots, required_winners = winners).as_dict()
-        else:
-            #No votes!
-            results = {'candidates': set(self.context.proposal_uids), 'winners': ()}
-        self.context.poll_result = OOBTree(results)
+        winners = self.context.poll_settings.get('winners', 1)
+        # results = STV(ballots, required_winners = winners).as_dict()
+        method = ScottishSTV(seats=winners, candidates=self.context.proposals)
+        for ballot in ballots:
+            method.add_ballot(ballot['ballot'], ballot['count'])
+
+        try:
+            method.calculate()
+        except STVException:
+            # Should only happen on no votes! Result will be incomplete, but still returns dict.
+            pass
+
+        self.context.poll_result = OOBTree(method.result.as_dict())
 
     def change_states_of(self):
         """ This gets called when a poll has finished.
@@ -56,7 +71,7 @@ class STVPoll(PollPlugin):
         winners = []
         for uid in winner_uids:
             winners.append(view.resolve_uid(uid))
-        looser_uids = set(self.context.poll_result['candidates']) - winner_uids
+        looser_uids = set(self.context.proposals) - winner_uids
         loosers = []
         for uid in looser_uids:
             loosers.append(view.resolve_uid(uid))
@@ -68,4 +83,4 @@ class STVPoll(PollPlugin):
 
 
 def includeme(config):
-    config.registry.registerAdapter(STVPoll, name = STVPoll.name)
+    config.registry.registerAdapter(ScottishSTVPoll, name=ScottishSTVPoll.name)

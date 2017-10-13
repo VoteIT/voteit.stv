@@ -23,8 +23,8 @@ class STVTests(TestCase):
 
     @property
     def _cut(self):
-        from voteit.stv.models import STVPoll
-        return STVPoll
+        from voteit.stv.models import ScottishSTVPoll
+        return ScottishSTVPoll
 
     def test_verify_class(self):
         self.failUnless(verifyClass(IPollPlugin, self._cut))

@@ -11,7 +11,8 @@ requires = (
     'colander',
     'deform',
     'voteit.core',
-    'python-vote-core==20120423.0',
+    'stvpoll',
+    'typing'
     )
 
 setup(name='voteit.stv',
