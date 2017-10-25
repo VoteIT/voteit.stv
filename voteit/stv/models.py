@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from BTrees.OOBTree import OOBTree
 from pyramid.renderers import render
 from stvpoll.exceptions import STVException
@@ -14,9 +16,18 @@ from voteit.stv.schemas import STVPollSchema
 
 
 class ScottishSTVPoll(PollPlugin):
-    name = 'stv'
-    title = _(u"Single transferable vote")
-    description = _("")
+    name = 'scottish_stv'
+    title = _("Scottish STV (Single Transferable Vote)")
+    description = _("moderator_description_scottish_stv",
+                    default="Ranked poll with single or multiple winners. "
+                            "Voters rank proposals by order of preference. "
+                            "Surplus or discarded votes are transferred to reduce wasted votes.")
+    voter_description = _("voter_description_scottish_stv",
+                          default="Rank proposals by order of preference. "
+                                  "In case your proposal is excluded or get surplus votes, "
+                                  "your vote will be transferred according to your list.")
+    method = ScottishSTV
+    template_name = 'voteit.stv:templates/result_scottish_stv.pt'
 
     def get_settings_schema(self):
         return SettingsSchema()
@@ -38,8 +49,7 @@ class ScottishSTVPoll(PollPlugin):
     def handle_close(self):
         ballots = self.format_ballots()
         winners = self.context.poll_settings.get('winners', 1)
-        # results = STV(ballots, required_winners = winners).as_dict()
-        method = ScottishSTV(seats=winners, candidates=self.context.proposals)
+        method = self.method(seats=winners, candidates=self.context.proposals)
         for ballot in ballots:
             method.add_ballot(ballot['ballot'], ballot['count'])
 
@@ -57,8 +67,8 @@ class ScottishSTVPoll(PollPlugin):
             Like: {'<uid>':'approved', '<uid>', 'denied'}
         """
         result = {}
-        winners = self.context.poll_result.get('winners', ())
-        losers = self.context.poll_result['candidates'] - set(winners)
+        winners = set(self.context.poll_result.get('winners', ()))
+        losers = set(self.context.proposals) - winners
         if winners:
             for winner in winners:
                 result[winner] = 'approved'
@@ -67,20 +77,44 @@ class ScottishSTVPoll(PollPlugin):
         return result
 
     def render_result(self, view):
-        winner_uids = self.context.poll_result.get('winners', set())
+        winner_uids = set(self.context.poll_result.get('winners', ()))
         winners = []
         for uid in winner_uids:
             winners.append(view.resolve_uid(uid))
-        looser_uids = set(self.context.proposals) - winner_uids
-        loosers = []
-        for uid in looser_uids:
-            loosers.append(view.resolve_uid(uid))
-        response = {}
-        response['context'] = self.context
-        response['winners'] = winners
-        response['loosers'] = loosers
-        return render('voteit.stv:templates/results.pt', response, request = view.request)
+        loser_uids = set(self.context.proposals) - winner_uids
+        losers = []
+        for uid in loser_uids:
+            losers.append(view.resolve_uid(uid))
+        rnds = []
+        for _round in self.context.poll_result.get('rounds', ()):
+            if isinstance(_round['selected'], basestring):
+                _round['selected'] = view.resolve_uid(_round['selected'])
+            rnds.append(_round)
+        response = {
+            'context': self.context,
+            'winners': winners,
+            'losers': losers,
+            'rounds': rnds,
+        }
+        return render(self.template_name, response, request=view.request)
+
+
+class CPOSTVPoll(ScottishSTVPoll):
+    name = 'cpo_stv'
+    title = _("Comparison of Pairs of Outcomes (STV)")
+    description = _("moderator_description_cpo_stv",
+                    default="Ranked poll with single or multiple winners. "
+                            "Voters rank proposals by order of preference. "
+                            "Winners are determined by comparing all possible combination "
+                            "of winners to find the combination with highest approval.")
+    voter_description = _("voter_description_cpo_stv",
+                          default="Rank proposals by order of preference. "
+                                  "Winners are determined by comparing all possible combination "
+                                  "of winners to find the combination with highest approval.")
+    method = CPO_STV
+    template_name = 'voteit.stv:templates/result_cpo_stv.pt'
 
 
 def includeme(config):
     config.registry.registerAdapter(ScottishSTVPoll, name=ScottishSTVPoll.name)
+    config.registry.registerAdapter(CPOSTVPoll, name=CPOSTVPoll.name)

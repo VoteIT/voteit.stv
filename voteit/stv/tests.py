@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from unittest import TestCase
 
 from pyramid import testing
@@ -51,25 +52,25 @@ class STVTests(TestCase):
         poll.close_poll()
         plugin = poll.get_poll_plugin()
         #Same as poll.ballots, but as a string
-        self.assertEqual(plugin.render_raw_data().body, "(({'proposals': ('p1uid', 'p2uid', 'p3uid')}, 3),)")
+        self.assertEqual(plugin.render_raw_data().body, "(({u'proposals': (u'p1uid', u'p2uid', u'p3uid')}, 3),)")
 
     def test_handle_close(self):
         poll = _setup_poll_fixture(self.config)
         poll.poll_plugin = 'stv'
         _add_votes(poll)
         poll.close_poll()
-        self.assertEqual(dict(poll.poll_result),
-                         {'candidates': set(['p1uid', 'p2uid', 'p3uid']),
-                                            'quota': 2,
-                                            'rounds': [{'tallies': {'p1uid': 3.0}, 'winners': set(['p1uid'])}],
-                                            'winners': set(['p1uid'])})
+        self.assertEqual(set(poll.poll_result['candidates']), {'p1uid', 'p2uid', 'p3uid'})
+        self.assertEqual(set(poll.poll_result['winners']), {'p1uid'})
+        self.assertEqual(poll.poll_result['quota'], 2)
+        self.assertEqual(poll.poll_result['complete'], True)
 
     def test_close_no_votes(self):
         poll = _setup_poll_fixture(self.config)
         poll.poll_plugin = 'stv'
         poll.close_poll()
-        self.assertEqual(dict(poll.poll_result),
-                         {'candidates': set(['p1uid', 'p2uid', 'p3uid']), 'winners': ()})
+        self.assertEqual(set(poll.poll_result['candidates']), {'p1uid', 'p2uid', 'p3uid'})
+        self.assertEqual(poll.poll_result['winners'], ())
+        self.assertEqual(poll.poll_result['complete'], False)
 
     def test_handle_close_2_winners(self):
         poll = _setup_poll_fixture(self.config)
@@ -77,7 +78,8 @@ class STVTests(TestCase):
         poll.poll_settings['winners'] = 2
         _add_votes(poll)
         poll.close_poll()
-        self.assertEqual(poll.poll_result['winners'], set(['p1uid', 'p2uid']))
+        self.assertEqual(set(poll.poll_result['winners']), {'p1uid', 'p2uid'})
+        self.assertEqual(poll.poll_result['complete'], True)
 
     def test_handle_close_2_winners_opa_example(self):
         poll = _setup_poll_fixture(self.config)
@@ -85,7 +87,8 @@ class STVTests(TestCase):
         poll.poll_settings['winners'] = 3
         _opa_fixture(poll)
         poll.close_poll()
-        self.assertEqual(poll.poll_result['winners'], set(['Alice', 'Bob', 'Chris']))
+        self.assertEqual(set(poll.poll_result['winners']), {'Alice', 'Bob', 'Chris'})
+        self.assertEqual(poll.poll_result['complete'], True)
 
 
 def _setup_poll_fixture(config):

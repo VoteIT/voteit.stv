@@ -1,0 +1,102 @@
+<tal:main xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="voteit.schulze">
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <h4 class="modal-title"
+    i18n:translate="">
+    Results of
+    <tal:ts replace="context.title" i18n:name="title" />
+  </h4>
+</div>
+<div class="modal-body"><div data-flash-slot="modal"></div>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    <tal:ts i18n:translate="scottish_stv_result_explanation">
+    Scottish STV-polls are designed to achieve a proportional result with a minimum of wasted votes.
+    Votes from eliminated proposals or surplus from elected proposals are transferred in the order of the ballots.</tal:ts>
+</div>
+<hr />
+<div tal:condition="context.poll_result['randomized']" class="modal-body"
+     i18n:translate="stv_tied_description">
+    Randomization was used to resolve ties.
+</div>
+<div tal:condition="not context.poll_result['complete']" class="modal-body"
+     i18n:translate="stv_incomplete_description">
+    Result is incomplete, due to unresolved ties.
+</div>
+<tal:iterate repeat="prop winners">
+  <div class="modal-body">
+
+      <p>
+          <tal:creator replace="structure request.creators_info(prop.creators, portrait = False)" />
+          ${prop.title}
+      </p>
+      <p><b>#${prop.aid}</b></p>
+        <span class="label label-approved">
+          <span class="glyphicon glyphicon-approved"></span>
+          <tal:approved i18n:translate="">Approved</tal:approved>
+        </span>
+  </div>
+</tal:iterate>
+
+<tal:iterate repeat="prop losers">
+  <div class="modal-body">
+
+      <p>
+          <tal:creator replace="structure request.creators_info(prop.creators, portrait = False)" />
+          ${prop.title}
+      </p>
+      <p><b>#${prop.aid}</b></p>
+        <span class="label label-denied">
+          <span class="glyphicon glyphicon-denied"></span>
+          <tal:approved i18n:translate="">Denied</tal:approved>
+        </span>
+  </div>
+</tal:iterate>
+
+<div class="modal-body">
+    <p class="text-right">
+        <a class="btn btn-default btn-xs" data-toggle="collapse"
+           href="#prop-details"
+           aria-expanded="false"
+           aria-controls="prop-details">
+          <span class="glyphicon glyphicon-info-sign"></span>
+          <tal:ts i18n:translate="">Detailed result</tal:ts>
+        </a>
+    </p>
+    <div class="collapse" id="prop-details">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><tal:ts i18n:translate="">Round</tal:ts></th>
+                    <th><tal:ts i18n:translate="">Result</tal:ts></th>
+                    <th><tal:ts i18n:translate="">Method</tal:ts></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="round context.poll_result['rounds']"
+                    tal:attributes="class 'table-success' if round.status == 'Elected' else 'table-danger'">
+                    <th scope="row" tal:content="repeat.round.number"></th>
+                    <td><tal:ts i18n:translate="">${round.status}</tal:ts> #${round.selected.aid}</td>
+                    <td><tal:ts i18n:translate="">${round.method}</tal:ts></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td><tal:ts i18n:translate="">Complete result</tal:ts></td>
+                    <td><tal:ts i18n:translate="">${context.poll_result['complete'] and 'Yes' or 'No'}</tal:ts></td>
+                </tr>
+                <tr>
+                    <td><tal:ts i18n:translate="">Random in tiebreak</tal:ts></td>
+                    <td><tal:ts i18n:translate="">${context.poll_result['randomized'] and 'Yes' or 'No'}</tal:ts></td>
+                </tr>
+                <tr>
+                    <td><tal:ts i18n:translate="">Quota (votes to be elected)</tal:ts></td>
+                    <td>${context.poll_result['quota']}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</tal:main>
