@@ -75,7 +75,7 @@
                 <tr tal:repeat="round context.poll_result['rounds']"
                     tal:attributes="class 'table-success' if round.status == 'Elected' else 'table-danger'">
                     <th scope="row" tal:content="repeat.round.number"></th>
-                    <td><tal:ts i18n:translate="">${round.status}</tal:ts> #${round.selected.aid}</td>
+                    <td><tal:ts i18n:translate="">${round.status}</tal:ts> <span tal:repeat="proposal round.selected">#${proposal.aid} </span></td>
                     <td><tal:ts i18n:translate="">${round.method}</tal:ts></td>
                 </tr>
             </tbody>

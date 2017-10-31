@@ -87,8 +87,11 @@ class ScottishSTVPoll(PollPlugin):
             losers.append(view.resolve_uid(uid))
         rnds = []
         for _round in self.context.poll_result.get('rounds', ()):
-            if isinstance(_round['selected'], basestring):
-                _round['selected'] = view.resolve_uid(_round['selected'])
+            _proposals = []
+            for proposal in _round['selected']:
+                if isinstance(proposal, basestring):
+                    _proposals.append(view.resolve_uid(proposal))
+            _round['selected'] = _proposals
             rnds.append(_round)
         response = {
             'context': self.context,
