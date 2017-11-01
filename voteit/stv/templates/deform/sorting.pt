@@ -9,7 +9,7 @@
       <ul id="${oid}-sortable-picked" class="list-group ${oid}-connectedSortable sortable-container">
         <li class="list-group-item" tal:repeat="choice cstruct">
           <tal:def tal:define="prop prop_dict[choice];">
-            ${prop.aid}
+            ${prop.title} <span class="badge">#${prop.aid}</span>
             <input type="hidden" name="selected" id="${oid}-${choice}" value="${choice}" />
           </tal:def>
         </li>
@@ -22,7 +22,7 @@
       <ul id="${oid}-sortable-pool" class="list-group ${oid}-connectedSortable sortable-container">
         <li class="list-group-item" tal:repeat="choice pool">
           <tal:def tal:define="prop prop_dict[choice]">
-            ${prop.aid}
+            ${prop.title} <span class="badge">#${prop.aid}</span>
             <input type="hidden" name="pool-item" id="${oid}-${choice}" value="${choice}" />
           </tal:def>
         </li>
