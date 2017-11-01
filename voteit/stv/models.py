@@ -81,23 +81,26 @@ class ScottishSTVPoll(PollPlugin):
         winners = []
         for uid in winner_uids:
             winners.append(view.resolve_uid(uid))
+
         loser_uids = set(self.context.proposals) - winner_uids
         losers = []
         for uid in loser_uids:
             losers.append(view.resolve_uid(uid))
-        rnds = []
+
+        rounds = []
         for _round in self.context.poll_result.get('rounds', ()):
-            _proposals = []
-            for proposal in _round['selected']:
-                if isinstance(proposal, basestring):
-                    _proposals.append(view.resolve_uid(proposal))
-            _round['selected'] = _proposals
-            rnds.append(_round)
+            round_copy = dict(_round)
+            selected = []
+            for proposal_uid in _round['selected']:
+                selected.append(view.resolve_uid(proposal_uid))
+            round_copy['selected'] = selected
+            rounds.append(round_copy)
+
         response = {
             'context': self.context,
             'winners': winners,
             'losers': losers,
-            'rounds': rnds,
+            'rounds': rounds,
         }
         return render(self.template_name, response, request=view.request)
 

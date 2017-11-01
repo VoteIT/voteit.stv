@@ -14,43 +14,42 @@
     Votes from eliminated proposals or surplus from elected proposals are transferred in the order of the ballots.</tal:ts>
 </div>
 <hr />
-<div tal:condition="context.poll_result['randomized']" class="modal-body"
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th i18n:translate="">Approved</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr tal:repeat="prop winners" class="success">
+            <td tal:content="repeat.prop.number"></td>
+            <td>${prop.title} <span class="badge">#${prop.aid}</span></td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th i18n:translate="">Denied</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr tal:repeat="prop losers" class="warning">
+            <td>&nbsp;</td>
+            <td>${prop.title} <span class="badge">#${prop.aid}</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<div tal:condition="context.poll_result['randomized']" class="modal-body bg-danger"
      i18n:translate="stv_tied_description">
     Randomization was used to resolve ties.
 </div>
-<div tal:condition="not context.poll_result['complete']" class="modal-body"
+<div tal:condition="not context.poll_result['complete']" class="modal-body bg-danger"
      i18n:translate="stv_incomplete_description">
     Result is incomplete, due to unresolved ties.
 </div>
-<tal:iterate repeat="prop winners">
-  <div class="modal-body">
-
-      <p>
-          <tal:creator replace="structure request.creators_info(prop.creators, portrait = False)" />
-          ${prop.title}
-      </p>
-      <p><b>#${prop.aid}</b></p>
-        <span class="label label-approved">
-          <span class="glyphicon glyphicon-approved"></span>
-          <tal:approved i18n:translate="">Approved</tal:approved>
-        </span>
-  </div>
-</tal:iterate>
-
-<tal:iterate repeat="prop losers">
-  <div class="modal-body">
-
-      <p>
-          <tal:creator replace="structure request.creators_info(prop.creators, portrait = False)" />
-          ${prop.title}
-      </p>
-      <p><b>#${prop.aid}</b></p>
-        <span class="label label-denied">
-          <span class="glyphicon glyphicon-denied"></span>
-          <tal:approved i18n:translate="">Denied</tal:approved>
-        </span>
-  </div>
-</tal:iterate>
 
 <div class="modal-body">
     <p class="text-right">
@@ -72,7 +71,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr tal:repeat="round context.poll_result['rounds']"
+                <tr tal:repeat="round rounds"
                     tal:attributes="class 'table-success' if round.status == 'Elected' else 'table-danger'">
                     <th scope="row" tal:content="repeat.round.number"></th>
                     <td><tal:ts i18n:translate="">${round.status}</tal:ts> <span tal:repeat="proposal round.selected">#${proposal.aid} </span></td>
