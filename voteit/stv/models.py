@@ -120,4 +120,5 @@ class CPOSTVPoll(ScottishSTVPoll):
 
 def includeme(config):
     config.registry.registerAdapter(ScottishSTVPoll, name=ScottishSTVPoll.name)
-    config.registry.registerAdapter(CPOSTVPoll, name=CPOSTVPoll.name)
+    # CPO needs more testing, and should probable not be used in most cases. disabled for now.
+    # config.registry.registerAdapter(CPOSTVPoll, name=CPOSTVPoll.name)
