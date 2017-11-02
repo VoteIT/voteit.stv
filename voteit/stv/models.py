@@ -2,17 +2,15 @@ from __future__ import unicode_literals
 
 from BTrees.OOBTree import OOBTree
 from pyramid.renderers import render
-from stvpoll.exceptions import STVException
-from typing import List
-
-from voteit.core.models.poll_plugin import PollPlugin
-from pyvotecore.stv import STV
-from stvpoll.scottish_stv import ScottishSTV
 from stvpoll.cpo_stv import CPO_STV
+from stvpoll.exceptions import STVException
+from stvpoll.scottish_stv import ScottishSTV
+from typing import List
+from voteit.core.models.poll_plugin import PollPlugin
 
 from voteit.stv import _
-from voteit.stv.schemas import SettingsSchema
 from voteit.stv.schemas import STVPollSchema
+from voteit.stv.schemas import SettingsSchema
 
 
 class ScottishSTVPoll(PollPlugin):
@@ -33,8 +31,7 @@ class ScottishSTVPoll(PollPlugin):
         return SettingsSchema()
 
     def get_vote_schema(self):
-        schema = STVPollSchema()
-        return schema
+        return STVPollSchema()
 
     def format_ballots(self):
         # type: () -> List[dict]
