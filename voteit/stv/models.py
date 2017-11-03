@@ -64,8 +64,8 @@ class ScottishSTVPoll(PollPlugin):
             Like: {'<uid>':'approved', '<uid>', 'denied'}
         """
         result = {}
-        winners = set(self.context.poll_result.get('winners', ()))
-        losers = set(self.context.proposals) - winners
+        winners = self.context.poll_result.get('winners', ())
+        losers = set(self.context.proposals).difference(winners)
         if winners:
             for winner in winners:
                 result[winner] = 'approved'
@@ -74,12 +74,12 @@ class ScottishSTVPoll(PollPlugin):
         return result
 
     def render_result(self, view):
-        winner_uids = set(self.context.poll_result.get('winners', ()))
+        winner_uids = self.context.poll_result.get('winners', ())
         winners = []
         for uid in winner_uids:
             winners.append(view.resolve_uid(uid))
 
-        loser_uids = set(self.context.proposals) - winner_uids
+        loser_uids = set(self.context.proposals).difference(winner_uids)
         losers = []
         for uid in loser_uids:
             losers.append(view.resolve_uid(uid))
