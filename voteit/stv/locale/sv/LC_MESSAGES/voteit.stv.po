@@ -1,0 +1,163 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Swedish (VoteIT)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-20 10:58+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Swedish <http://example.com/projects/voteit/voteit-stv/sv/>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.16\n"
+
+#: voteit/stv/models.py:18
+msgid "Scottish STV (Single Transferable Vote)"
+msgstr "Skotsk STV (Single Transferable Vote)"
+
+# Default: Ranked poll with single or multiple winners. Voters rank proposals
+# by order of preference. Surplus or discarded votes are transferred to reduce
+# wasted votes.
+#. Default: Ranked poll with single or multiple winners. Voters rank proposals
+#. by order of preference. Surplus or discarded votes are transferred to reduce
+#. wasted votes.
+#: voteit/stv/models.py:19
+msgid "moderator_description_scottish_stv"
+msgstr ""
+"Rangordnad omröstning med en eller flera vinnare. Röstaren rangordnar de "
+"förslag hen vill rösta på. Röster från uteslutna förslag och överskott från "
+"valda förslag förs över enligt rangordningen för att minimera antalet "
+"bortkastade röster."
+
+# Default: Rank proposals by order of preference. In case your proposal is
+# excluded or get surplus votes, your vote will be transferred according to
+# your list.
+#. Default: Rank proposals by order of preference. In case your proposal is
+#. excluded or get surplus votes, your vote will be transferred according to
+#. your list.
+#: voteit/stv/models.py:23
+msgid "voter_description_scottish_stv"
+msgstr ""
+"Rangordna förslagen i den ordning du föredrar dem. Om det förslag du röstat "
+"på utesluts eller får ett överskott av röster flyttas din röst över enligt "
+"din rangordning."
+
+#: voteit/stv/models.py:107
+msgid "Comparison of Pairs of Outcomes (STV)"
+msgstr "Parvis jämförelse av utfall (STV)"
+
+# Default: Ranked poll with single or multiple winners. Voters rank proposals
+# by order of preference. Winners are determined by comparing all possible
+# combination of winners to find the combination with highest approval.
+#. Default: Ranked poll with single or multiple winners. Voters rank proposals
+#. by order of preference. Winners are determined by comparing all possible
+#. combination of winners to find the combination with highest approval.
+#: voteit/stv/models.py:108
+msgid "moderator_description_cpo_stv"
+msgstr ""
+"Rangordnad omröstning med en eller flera vinnare. Röstaren rangordnar de "
+"förslag hen vill rösta på. Vinnare bestäms genom att jämföra alla möjliga "
+"utfall för att hitta kombinationen med högst godkännande."
+
+# Default: Rank proposals by order of preference. Winners are determined by
+# comparing all possible combination of winners to find the combination with
+# highest approval.
+#. Default: Rank proposals by order of preference. Winners are determined by
+#. comparing all possible combination of winners to find the combination with
+#. highest approval.
+#: voteit/stv/models.py:113
+msgid "voter_description_cpo_stv"
+msgstr ""
+"Rangordna förslagen i den ordning du föredrar dem. Vinnare bestäms genom att "
+"jämföra alla möjliga utfall för att hitta kombinationen med högst "
+"godkännande."
+
+#: voteit/stv/schemas.py:13
+msgid "Winners"
+msgstr "Vinnare"
+
+# Default: Numbers of possible winners in the poll
+#. Default: Numbers of possible winners in the poll
+#: voteit/stv/schemas.py:14
+msgid "stv_config_winners_description"
+msgstr "Antal möjliga vinnare i omröstningen"
+
+#: voteit/stv/templates/result_cpo_stv.pt:5
+#: voteit/stv/templates/result_scottish_stv.pt:5
+msgid "Results of ${title}"
+msgstr ""
+
+#. Default: Comparison of Pairs of Outcomes STV-polls compare all possible
+#. outcomes to each other, comparing every possible combination of winners to
+#. every other possible combination. The method ensures a proportional
+#. election, while minimizing tactical voting.
+#: voteit/stv/templates/result_cpo_stv.pt:12
+msgid "cpo_stv_result_explanation"
+msgstr ""
+
+# Default: Numbers of possible winners in the poll
+#. Default: Randomization was used to resolve ties.
+#: voteit/stv/templates/result_cpo_stv.pt:19
+#: voteit/stv/templates/result_scottish_stv.pt:46
+#, fuzzy
+msgid "stv_tied_description"
+msgstr "Antal möjliga vinnare i omröstningen"
+
+# Default: Numbers of possible winners in the poll
+#. Default: Result is incomplete, due to unresolved ties.
+#: voteit/stv/templates/result_cpo_stv.pt:23
+#: voteit/stv/templates/result_scottish_stv.pt:50
+#, fuzzy
+msgid "stv_incomplete_description"
+msgstr "Antal möjliga vinnare i omröstningen"
+
+#: voteit/stv/templates/result_cpo_stv.pt:36
+#: voteit/stv/templates/result_scottish_stv.pt:22
+msgid "Approved"
+msgstr ""
+
+#: voteit/stv/templates/result_cpo_stv.pt:51
+#: voteit/stv/templates/result_scottish_stv.pt:34
+msgid "Denied"
+msgstr ""
+
+#: voteit/stv/templates/result_cpo_stv.pt:63
+#: voteit/stv/templates/result_scottish_stv.pt:61
+msgid "Detailed result"
+msgstr ""
+
+#: voteit/stv/templates/result_cpo_stv.pt:70
+#: voteit/stv/templates/result_scottish_stv.pt:85
+msgid "Complete result"
+msgstr ""
+
+#: voteit/stv/templates/result_cpo_stv.pt:74
+#: voteit/stv/templates/result_scottish_stv.pt:89
+msgid "Random in tiebreak"
+msgstr ""
+
+#: voteit/stv/templates/result_cpo_stv.pt:78
+#: voteit/stv/templates/result_scottish_stv.pt:93
+msgid "Quota (votes to be elected)"
+msgstr ""
+
+#. Default: Scottish STV-polls are designed to achieve a proportional result
+#. with a minimum of wasted votes. Votes from eliminated proposals or surplus
+#. from elected proposals are transferred in the order of the ballots.
+#: voteit/stv/templates/result_scottish_stv.pt:12
+msgid "scottish_stv_result_explanation"
+msgstr ""
+
+#: voteit/stv/templates/result_scottish_stv.pt:68
+msgid "Round"
+msgstr ""
+
+#: voteit/stv/templates/result_scottish_stv.pt:69
+msgid "Result"
+msgstr ""
+
+#: voteit/stv/templates/result_scottish_stv.pt:70
+msgid "Method"
+msgstr ""
