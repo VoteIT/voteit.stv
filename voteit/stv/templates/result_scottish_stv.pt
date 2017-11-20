@@ -83,11 +83,17 @@
             <tbody>
                 <tr>
                     <td><tal:ts i18n:translate="">Complete result</tal:ts></td>
-                    <td><tal:ts i18n:translate="">${context.poll_result['complete'] and 'Yes' or 'No'}</tal:ts></td>
+                    <td>
+                        <tal:ts condition="context.poll_result['complete']|False" i18n:translate="">Yes</tal:ts>
+                        <tal:ts condition="not context.poll_result['complete']|True" i18n:translate="">No</tal:ts>
+                    </td>
                 </tr>
                 <tr>
                     <td><tal:ts i18n:translate="">Random in tiebreak</tal:ts></td>
-                    <td><tal:ts i18n:translate="">${context.poll_result['randomized'] and 'Yes' or 'No'}</tal:ts></td>
+                    <td>
+                        <tal:ts condition="context.poll_result['randomized']|False" i18n:translate="">Yes</tal:ts>
+                        <tal:ts condition="not context.poll_result['randomized']|True" i18n:translate="">No</tal:ts>
+                    </td>
                 </tr>
                 <tr>
                     <td><tal:ts i18n:translate="">Quota (votes to be elected)</tal:ts></td>

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE 1.0\n"
-"POT-Creation-Date: 2017-11-20 10:58+0100\n"
+"POT-Creation-Date: 2017-11-20 11:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,12 +107,12 @@ msgid "Complete result"
 msgstr ""
 
 #: ././voteit/stv/templates/result_cpo_stv.pt:74
-#: ././voteit/stv/templates/result_scottish_stv.pt:89
+#: ././voteit/stv/templates/result_scottish_stv.pt:92
 msgid "Random in tiebreak"
 msgstr ""
 
 #: ././voteit/stv/templates/result_cpo_stv.pt:78
-#: ././voteit/stv/templates/result_scottish_stv.pt:93
+#: ././voteit/stv/templates/result_scottish_stv.pt:99
 msgid "Quota (votes to be elected)"
 msgstr ""
 
@@ -133,4 +133,14 @@ msgstr ""
 
 #: ././voteit/stv/templates/result_scottish_stv.pt:70
 msgid "Method"
+msgstr ""
+
+#: ././voteit/stv/templates/result_scottish_stv.pt:87
+#: ././voteit/stv/templates/result_scottish_stv.pt:94
+msgid "Yes"
+msgstr ""
+
+#: ././voteit/stv/templates/result_scottish_stv.pt:88
+#: ././voteit/stv/templates/result_scottish_stv.pt:95
+msgid "No"
 msgstr ""
