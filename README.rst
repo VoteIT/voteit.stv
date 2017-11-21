@@ -7,5 +7,4 @@ STV Polls for VoteIT
 This is a plugin package for VoteIT that provides functionality
 for Single transferable vote polls.
 
-
-NOTE! This package isn't finished yet, don't use it!
+It currenly has only Scottish STV working.
