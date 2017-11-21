@@ -6,15 +6,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE 1.0\n"
-"POT-Creation-Date: 2017-11-20 11:33+0100\n"
+"POT-Creation-Date: 2017-11-21 13:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Lingua 4.13\n"
+"Language: \n"
+"Generated-By: Lingua 4.7\n"
 
 #: ././voteit/stv/models.py:18
 msgid "Scottish STV (Single Transferable Vote)"
@@ -52,12 +52,12 @@ msgstr ""
 msgid "voter_description_cpo_stv"
 msgstr ""
 
-#: ././voteit/stv/schemas.py:13
+#: ././voteit/stv/schemas.py:14
 msgid "Winners"
 msgstr ""
 
 #. Default: Numbers of possible winners in the poll
-#: ././voteit/stv/schemas.py:14
+#: ././voteit/stv/schemas.py:15
 msgid "stv_config_winners_description"
 msgstr ""
 
@@ -143,4 +143,12 @@ msgstr ""
 #: ././voteit/stv/templates/result_scottish_stv.pt:88
 #: ././voteit/stv/templates/result_scottish_stv.pt:95
 msgid "No"
+msgstr ""
+
+#: ././voteit/stv/templates/deform/sorting.pt:8
+msgid "Selected"
+msgstr ""
+
+#: ././voteit/stv/templates/deform/sorting.pt:23
+msgid "Pool"
 msgstr ""
