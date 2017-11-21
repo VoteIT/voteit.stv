@@ -1,15 +1,17 @@
+<tal:main xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="voteit.stv">
 <div tal:define="css_class css_class|field.widget.css_class;
                  style style|field.widget.style;
                  oid oid|field.oid;">
+  <p>Drag from left to right to select. Put the most preferred on top.</p>
   <div class="row">
     <div  class="col-sm-6">
-      Selected
+      <tal:ts i18n:translate="">Selected</tal:ts>
 
       ${field.start_sequence()}
       <ul id="${oid}-sortable-picked" class="list-group ${oid}-connectedSortable sortable-container">
         <li class="list-group-item" tal:repeat="choice cstruct">
           <tal:def tal:define="prop prop_dict[choice];">
-            ${prop.title} <span class="badge">#${prop.aid}</span>
+            ${structure: trunc(prop.text)} <span class="badge">#${prop.aid}</span>
             <input type="hidden" name="selected" id="${oid}-${choice}" value="${choice}" />
           </tal:def>
         </li>
@@ -18,11 +20,12 @@
     </div>
 
     <div class="col-sm-6">
-      Pool
+      <tal:ts i18n:translate="">Pool</tal:ts>
+
       <ul id="${oid}-sortable-pool" class="list-group ${oid}-connectedSortable sortable-container">
         <li class="list-group-item" tal:repeat="choice pool">
           <tal:def tal:define="prop prop_dict[choice]">
-            ${prop.title} <span class="badge">#${prop.aid}</span>
+            ${structure: trunc(prop.text)} <span class="badge">#${prop.aid}</span>
             <input type="hidden" name="pool-item" id="${oid}-${choice}" value="${choice}" />
           </tal:def>
         </li>
@@ -40,7 +43,6 @@
       }).disableSelection();
      }
    );
-
-
   </script>
 </div>
+</tal:main>

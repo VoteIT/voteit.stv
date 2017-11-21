@@ -1,6 +1,7 @@
 import colander
 import deform
 from six import string_types
+from voteit.core.helpers import strip_and_truncate
 
 from voteit.stv import _
 
@@ -29,6 +30,7 @@ class ProposalOrderingWidget(deform.widget.Widget):
         proposals = kw.get('proposals', self.proposals)
         kw['prop_dict'] = prop_dict = self.as_dict(proposals)
         kw['pool'] = set(prop_dict.keys()) - set(cstruct)
+        kw['trunc'] = strip_and_truncate
         template = readonly and self.readonly_template or self.template
         tmpl_values = self.get_template_values(field, cstruct, kw)
         return field.renderer(template, **tmpl_values)
