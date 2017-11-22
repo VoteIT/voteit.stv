@@ -5,7 +5,6 @@ from pyramid.renderers import render
 from stvpoll.cpo_stv import CPO_STV
 from stvpoll.exceptions import STVException
 from stvpoll.scottish_stv import ScottishSTV
-from typing import List
 from voteit.core.models.poll_plugin import PollPlugin
 
 from voteit.stv import _
@@ -34,7 +33,6 @@ class ScottishSTVPoll(PollPlugin):
         return STVPollSchema()
 
     def format_ballots(self):
-        # type: () -> List[dict]
         formatted = []
         for (ballot, count) in self.context.ballots:
             formatted.append({

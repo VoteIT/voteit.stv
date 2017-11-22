@@ -12,7 +12,6 @@ requires = (
     'deform',
     'voteit.core',
     'stvpoll',
-    'typing',
     'js.jqueryui_touch_punch',
     )
 
