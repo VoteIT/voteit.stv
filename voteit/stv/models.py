@@ -1,4 +1,5 @@
-from __future__ import unicode_literals
+# -*- coding: utf-8 -*-
+# from __future__ import unicode_literals
 
 from BTrees.OOBTree import OOBTree
 from pyramid.renderers import render
@@ -12,19 +13,10 @@ from voteit.stv.schemas import STVPollSchema
 from voteit.stv.schemas import SettingsSchema
 
 
-class ScottishSTVPoll(PollPlugin):
-    name = 'scottish_stv'
-    title = _("Scottish STV (Single Transferable Vote)")
-    description = _("moderator_description_scottish_stv",
-                    default="Ranked poll with single or multiple winners. "
-                            "Voters rank proposals by order of preference. "
-                            "Surplus or discarded votes are transferred to reduce wasted votes.")
-    voter_description = _("voter_description_scottish_stv",
-                          default="Rank proposals by order of preference. "
-                                  "In case your proposal is excluded or get surplus votes, "
-                                  "your vote will be transferred according to your list.")
-    method = ScottishSTV
-    template_name = 'voteit.stv:templates/result_scottish_stv.pt'
+class BaseSTVPoll(PollPlugin):
+    template_name = None
+    method = None
+    multiple_winners = True
 
     def get_settings_schema(self):
         return SettingsSchema()
@@ -100,7 +92,25 @@ class ScottishSTVPoll(PollPlugin):
         return render(self.template_name, response, request=view.request)
 
 
-class CPOSTVPoll(ScottishSTVPoll):
+class ScottishSTVPoll(BaseSTVPoll):
+    name = 'scottish_stv'
+    title = _("Scottish STV (Single Transferable Vote)")
+    description = _("moderator_description_scottish_stv",
+                    default="Ranked poll with single or multiple winners. "
+                            "Voters rank proposals by order of preference. "
+                            "Surplus or discarded votes are transferred to reduce wasted votes.")
+    voter_description = _("voter_description_scottish_stv",
+                          default="Rank proposals by order of preference. "
+                                  "In case your proposal is excluded or get surplus votes, "
+                                  "your vote will be transferred according to your list.")
+    method = ScottishSTV
+    template_name = 'voteit.stv:templates/result_scottish_stv.pt'
+
+    multiple_winners = True
+    priority = 2
+
+
+class CPOSTVPoll(BaseSTVPoll):
     name = 'cpo_stv'
     title = _("Comparison of Pairs of Outcomes (STV)")
     description = _("moderator_description_cpo_stv",
@@ -114,6 +124,17 @@ class CPOSTVPoll(ScottishSTVPoll):
                                   "of winners to find the combination with highest approval.")
     method = CPO_STV
     template_name = 'voteit.stv:templates/result_cpo_stv.pt'
+
+    multiple_winners = True
+    priority = 3
+    possible_combinations_cap = 1000
+
+    @classmethod
+    def check_applicable(cls, proposals, winners=1, random_tiebreaks=True):
+        # type: (int, int, bool) -> bool
+        # 1000 possible combinations means almost ½ million comparisons.
+        # Calculating number of comparisons is possible, but a waste of time.
+        return winners > 1 and CPO_STV.possible_combinations(proposals, winners) < cls.possible_combinations_cap
 
 
 def includeme(config):
