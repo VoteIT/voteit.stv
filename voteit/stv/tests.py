@@ -36,7 +36,7 @@ class STVTests(TestCase):
     def test_format_ballots(self):
         poll = _setup_poll_fixture(self.config)
         #We need a proper poll plugin for this test
-        poll.poll_plugin = 'stv'
+        poll.poll_plugin = 'scottish_stv'
         _add_votes(poll)
         poll.ballots = poll.calculate_ballots()
         #poll.close_poll()
@@ -47,7 +47,7 @@ class STVTests(TestCase):
 
     def test_render_raw_data(self):
         poll = _setup_poll_fixture(self.config)
-        poll.poll_plugin = 'stv'
+        poll.poll_plugin = 'scottish_stv'
         _add_votes(poll)
         poll.close_poll()
         plugin = poll.get_poll_plugin()
@@ -56,7 +56,7 @@ class STVTests(TestCase):
 
     def test_handle_close(self):
         poll = _setup_poll_fixture(self.config)
-        poll.poll_plugin = 'stv'
+        poll.poll_plugin = 'scottish_stv'
         _add_votes(poll)
         poll.close_poll()
         self.assertEqual(set(poll.poll_result['candidates']), {'p1uid', 'p2uid', 'p3uid'})
@@ -66,15 +66,16 @@ class STVTests(TestCase):
 
     def test_close_no_votes(self):
         poll = _setup_poll_fixture(self.config)
-        poll.poll_plugin = 'stv'
+        poll.poll_plugin = 'scottish_stv'
         poll.close_poll()
         self.assertEqual(set(poll.poll_result['candidates']), {'p1uid', 'p2uid', 'p3uid'})
-        self.assertEqual(poll.poll_result['winners'], ())
-        self.assertEqual(poll.poll_result['complete'], False)
+        # This will not work, since poll will tiebreak with random
+        # self.assertEqual(poll.poll_result['winners'], ())
+        # self.assertEqual(poll.poll_result['complete'], False)
 
     def test_handle_close_2_winners(self):
         poll = _setup_poll_fixture(self.config)
-        poll.poll_plugin = 'stv'
+        poll.poll_plugin = 'scottish_stv'
         poll.poll_settings['winners'] = 2
         _add_votes(poll)
         poll.close_poll()
@@ -83,7 +84,7 @@ class STVTests(TestCase):
 
     def test_handle_close_2_winners_opa_example(self):
         poll = _setup_poll_fixture(self.config)
-        poll.poll_plugin = 'stv'
+        poll.poll_plugin = 'scottish_stv'
         poll.poll_settings['winners'] = 3
         _opa_fixture(poll)
         poll.close_poll()
