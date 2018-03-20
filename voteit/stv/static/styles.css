@@ -1,5 +1,4 @@
-.sortable-container {
-    /*border: 1px solid #ccc;*/
+.sortable-widget .sortable-container {
     min-height: 30px;
     background-color: #eee;
     padding: 3px !important;

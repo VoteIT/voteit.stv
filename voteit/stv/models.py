@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# from __future__ import unicode_literals
-
 from BTrees.OOBTree import OOBTree
 from pyramid.renderers import render
 from stvpoll.cpo_stv import CPO_STV

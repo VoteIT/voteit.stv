@@ -1,7 +1,8 @@
 <tal:main xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="voteit.stv">
-<div tal:define="css_class css_class|field.widget.css_class;
-                 style style|field.widget.style;
-                 oid oid|field.oid;">
+<div class="sortable-widget"
+    tal:define="css_class css_class|field.widget.css_class;
+             style style|field.widget.style;
+             oid oid|field.oid;">
   <p>Drag from left to right to select. Put the most preferred on top.</p>
   <div class="row">
     <div  class="col-sm-6">
