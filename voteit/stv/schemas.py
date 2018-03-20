@@ -52,26 +52,6 @@ def proposals_ordering_widget(node, kw):
     return ProposalOrderingWidget(proposals = context.get_proposal_objects())
 
 
-@colander.deferred
-def all_must_be_picked_validator(node, kw):
-    context = kw['context']
-    return ContainsExactly([x.uid for x in context.get_proposal_objects()])
-
-
-class ContainsExactly(object):
-    """ Input must contain exactly all of the values passed as initial choices.
-        The order is irrelevant though.
-    """
-
-    def __init__(self, choices):
-        self.choices = choices
-
-    def __call__(self, node, value):
-        if set(value) != set(self.choices):
-            msg = ("You must sort all of the proposals.")
-            raise colander.Invalid(node, msg)
-
-
 #The schema will be populated in the stv poll plugin
 class STVPollSchema(colander.Schema):
     widget = deform.widget.FormWidget(
@@ -81,5 +61,4 @@ class STVPollSchema(colander.Schema):
     proposals = colander.SchemaNode(
         colander.List(),
         widget = proposals_ordering_widget,
-        #validator = all_must_be_picked_validator,
     )
