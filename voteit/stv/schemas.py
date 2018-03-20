@@ -61,4 +61,5 @@ class STVPollSchema(colander.Schema):
     proposals = colander.SchemaNode(
         colander.List(),
         widget = proposals_ordering_widget,
+        title = _("Proposals"),
     )

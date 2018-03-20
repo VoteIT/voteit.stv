@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Swedish (VoteIT)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-21 13:13+0100\n"
-"PO-Revision-Date: 2017-11-21 13:15+0100\n"
+"POT-Creation-Date: 2018-03-20 17:30+0100\n"
+"PO-Revision-Date: 2018-03-20 17:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: Swedish <http://example.com/projects/voteit/voteit-stv/sv/>\n"
 "Language: sv\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 1.8.6\n"
 
-#: voteit/stv/models.py:18
+#: voteit/stv/models.py:95
 msgid "Scottish STV (Single Transferable Vote)"
 msgstr "Skotsk STV (Single Transferable Vote)"
 
@@ -29,7 +29,7 @@ msgstr "Skotsk STV (Single Transferable Vote)"
 #. Default: Ranked poll with single or multiple winners. Voters rank proposals
 #. by order of preference. Surplus or discarded votes are transferred to reduce
 #. wasted votes.
-#: voteit/stv/models.py:19
+#: voteit/stv/models.py:96
 msgid "moderator_description_scottish_stv"
 msgstr ""
 "Rangordnad omröstning med en eller flera vinnare. Röstaren rangordnar de "
@@ -49,14 +49,14 @@ msgstr ""
 #. Default: Rank proposals by order of preference. In case your proposal is
 #. excluded or get surplus votes, your vote will be transferred according to
 #. your list.
-#: voteit/stv/models.py:23
+#: voteit/stv/models.py:100
 msgid "voter_description_scottish_stv"
 msgstr ""
 "Rangordna förslagen i den ordning du föredrar dem. Om det förslag du röstat "
 "på utesluts eller får ett överskott av röster flyttas din röst över enligt "
 "din rangordning."
 
-#: voteit/stv/models.py:107
+#: voteit/stv/models.py:113
 msgid "Comparison of Pairs of Outcomes (STV)"
 msgstr "Parvis jämförelse av utfall (STV)"
 
@@ -72,7 +72,7 @@ msgstr "Parvis jämförelse av utfall (STV)"
 #. Default: Ranked poll with single or multiple winners. Voters rank proposals
 #. by order of preference. Winners are determined by comparing all possible
 #. combination of winners to find the combination with highest approval.
-#: voteit/stv/models.py:108
+#: voteit/stv/models.py:114
 msgid "moderator_description_cpo_stv"
 msgstr ""
 "Rangordnad omröstning med en eller flera vinnare. Röstaren rangordnar de "
@@ -91,7 +91,7 @@ msgstr ""
 #. Default: Rank proposals by order of preference. Winners are determined by
 #. comparing all possible combination of winners to find the combination with
 #. highest approval.
-#: voteit/stv/models.py:113
+#: voteit/stv/models.py:119
 msgid "voter_description_cpo_stv"
 msgstr ""
 "Rangordna förslagen i den ordning du föredrar dem. Vinnare bestäms genom att "
@@ -109,6 +109,10 @@ msgstr "Vinnare"
 #: voteit/stv/schemas.py:15
 msgid "stv_config_winners_description"
 msgstr "Antal möjliga vinnare i omröstningen"
+
+#: voteit/stv/schemas.py:64
+msgid "Proposals"
+msgstr "Förslag"
 
 #: voteit/stv/templates/result_cpo_stv.pt:5
 #: voteit/stv/templates/result_scottish_stv.pt:5
@@ -221,10 +225,16 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nej"
 
-#: voteit/stv/templates/deform/sorting.pt:8
+#. Default: Drag from left to right to select. Put the most preferred on top.
+#: voteit/stv/templates/deform/sorting.pt:6
+msgid "sorting_widget_help"
+msgstr ""
+"Dra från vänster till höger för att välja. Lägg de du föredrar mest överst."
+
+#: voteit/stv/templates/deform/sorting.pt:11
 msgid "Selected"
 msgstr "Valda"
 
-#: voteit/stv/templates/deform/sorting.pt:23
+#: voteit/stv/templates/deform/sorting.pt:26
 msgid "Pool"
 msgstr "Pool"
