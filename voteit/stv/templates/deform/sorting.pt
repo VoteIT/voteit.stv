@@ -3,7 +3,9 @@
     tal:define="css_class css_class|field.widget.css_class;
              style style|field.widget.style;
              oid oid|field.oid;">
-  <p>Drag from left to right to select. Put the most preferred on top.</p>
+  <p i18n:translate="sorting_widget_help">
+    Drag from left to right to select. Put the most preferred on top.
+  </p>
   <div class="row">
     <div  class="col-sm-6">
       <tal:ts i18n:translate="">Selected</tal:ts>
