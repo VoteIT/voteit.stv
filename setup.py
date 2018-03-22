@@ -11,9 +11,8 @@ requires = (
     'colander',
     'deform',
     'voteit.core',
-    'STVPoll',
+    'STVPoll>=0.1.3',
     'js.jqueryui-touch-punch',
-
     )
 
 setup(name='voteit.stv',

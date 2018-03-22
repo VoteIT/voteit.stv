@@ -1,7 +1,10 @@
 from __future__ import unicode_literals
 from unittest import TestCase
 
+from arche.views.base import BaseView
 from pyramid import testing
+from pyramid.config import Configurator
+
 from voteit.core.models.agenda_item import AgendaItem
 from voteit.core.models.interfaces import IPollPlugin
 from voteit.core.models.meeting import Meeting
@@ -93,9 +96,10 @@ class STVTests(TestCase):
 
 
 def _setup_poll_fixture(config):
-    config.testing_securitypolicy('admin', permissive = True)
-    #config.include('pyramid_chameleon')
-    #Register plugin
+    # type: (Configurator) -> Poll
+    config.testing_securitypolicy('admin', permissive=True)
+    # config.include('pyramid_chameleon')
+    # Register plugin
     config.include('voteit.stv')
     config.include('arche.testing')
     config.include('arche.testing.workflow')
