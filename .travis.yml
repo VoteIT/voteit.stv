@@ -9,8 +9,7 @@ before_install:
   - pip install --upgrade pip
 
 install:
-  - wget https://bootstrap.pypa.io/bootstrap-buildout.py
-  - python bootstrap-buildout.py
+  - pip install zc.buildout
   - travis_retry bin/buildout
 
 script:
