@@ -1,6 +1,6 @@
 [run]
-omit =
-  *test*py
 
 [report]
 show_missing = true
+omit =
+  *test*py
