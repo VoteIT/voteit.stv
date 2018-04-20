@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Swedish (VoteIT)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-20 14:25+0200\n"
+"POT-Creation-Date: 2018-04-20 14:27+0200\n"
 "PO-Revision-Date: 2018-03-20 17:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: Swedish <http://example.com/projects/voteit/voteit-stv/sv/>\n"
@@ -122,7 +122,7 @@ msgstr "Slumpmässig utslagsröst"
 #. lead to an incomplete results.
 #: voteit/stv/schemas.py:24
 #, fuzzy
-msgid "stv_random_tiebreak_description"
+msgid "stv_config_random_tiebreak_description"
 msgstr "Slumpmässig utslagsröst har använts."
 
 #: voteit/stv/schemas.py:71

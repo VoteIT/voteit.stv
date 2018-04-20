@@ -21,7 +21,7 @@ class SettingsSchema(colander.Schema):
     random_in_tiebreaks = colander.SchemaNode(
         colander.Bool(),
         title=_('Allow random in tiebreaks'),
-        description=_('stv_random_tiebreak_description',
+        description=_('stv_config_random_tiebreak_description',
                       default='Tiebreaks are unusual in real polls. '
                               'Disabling this can sometimes lead to an incomplete results.'),
         default=True,

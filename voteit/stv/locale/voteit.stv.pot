@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE 1.0\n"
-"POT-Creation-Date: 2018-04-20 14:25+0200\n"
+"POT-Creation-Date: 2018-04-20 14:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr ""
 #. Default: Tiebreaks are unusual in real polls. Disabling this can sometimes
 #. lead to an incomplete results.
 #: ./voteit/stv/schemas.py:24
-msgid "stv_random_tiebreak_description"
+msgid "stv_config_random_tiebreak_description"
 msgstr ""
 
 #: ./voteit/stv/schemas.py:71
