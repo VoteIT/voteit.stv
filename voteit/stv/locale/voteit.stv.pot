@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE 1.0\n"
-"POT-Creation-Date: 2018-03-20 17:30+0100\n"
+"POT-Creation-Date: 2018-04-20 14:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,52 +16,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.13\n"
 
-#: ./voteit/stv/models.py:95
+#: ./voteit/stv/models.py:103
 msgid "Scottish STV (Single Transferable Vote)"
 msgstr ""
 
 #. Default: Ranked poll with single or multiple winners. Voters rank proposals
 #. by order of preference. Surplus or discarded votes are transferred to reduce
 #. wasted votes.
-#: ./voteit/stv/models.py:96
+#: ./voteit/stv/models.py:104
 msgid "moderator_description_scottish_stv"
 msgstr ""
 
 #. Default: Rank proposals by order of preference. In case your proposal is
 #. excluded or get surplus votes, your vote will be transferred according to
 #. your list.
-#: ./voteit/stv/models.py:100
+#: ./voteit/stv/models.py:108
 msgid "voter_description_scottish_stv"
 msgstr ""
 
-#: ./voteit/stv/models.py:113
+#: ./voteit/stv/models.py:121
 msgid "Comparison of Pairs of Outcomes (STV)"
 msgstr ""
 
 #. Default: Ranked poll with single or multiple winners. Voters rank proposals
 #. by order of preference. Winners are determined by comparing all possible
 #. combination of winners to find the combination with highest approval.
-#: ./voteit/stv/models.py:114
+#: ./voteit/stv/models.py:122
 msgid "moderator_description_cpo_stv"
 msgstr ""
 
 #. Default: Rank proposals by order of preference. Winners are determined by
 #. comparing all possible combination of winners to find the combination with
 #. highest approval.
-#: ./voteit/stv/models.py:119
+#: ./voteit/stv/models.py:127
 msgid "voter_description_cpo_stv"
 msgstr ""
 
-#: ./voteit/stv/schemas.py:14
+#: ./voteit/stv/schemas.py:16
 msgid "Winners"
 msgstr ""
 
 #. Default: Numbers of possible winners in the poll
-#: ./voteit/stv/schemas.py:15
+#: ./voteit/stv/schemas.py:17
 msgid "stv_config_winners_description"
 msgstr ""
 
-#: ./voteit/stv/schemas.py:64
+#: ./voteit/stv/schemas.py:23
+msgid "Allow random in tiebreaks"
+msgstr ""
+
+#. Default: Tiebreaks are unusual in real polls. Disabling this can sometimes
+#. lead to an incomplete results.
+#: ./voteit/stv/schemas.py:24
+msgid "stv_random_tiebreak_description"
+msgstr ""
+
+#: ./voteit/stv/schemas.py:71
 msgid "Proposals"
 msgstr ""
 
@@ -150,14 +160,17 @@ msgid "No"
 msgstr ""
 
 #. Default: Drag from left to right to select. Put the most preferred on top.
+#: ./voteit/stv/templates/deform/sorting_readonly.pt:6
 #: ./voteit/stv/templates/deform/sorting.pt:6
 msgid "sorting_widget_help"
 msgstr ""
 
+#: ./voteit/stv/templates/deform/sorting_readonly.pt:11
 #: ./voteit/stv/templates/deform/sorting.pt:11
 msgid "Selected"
 msgstr ""
 
+#: ./voteit/stv/templates/deform/sorting_readonly.pt:26
 #: ./voteit/stv/templates/deform/sorting.pt:26
 msgid "Pool"
 msgstr ""
