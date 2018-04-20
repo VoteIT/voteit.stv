@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import colander
 import deform
 from six import string_types
@@ -11,10 +13,18 @@ class SettingsSchema(colander.Schema):
     """
     winners = colander.SchemaNode(
         colander.Int(),
-        title = _(u"Winners"),
-        description = _(u"stv_config_winners_description",
-                      default=u"Numbers of possible winners in the poll"),
+        title=_("Winners"),
+        description=_("stv_config_winners_description",
+                      default="Numbers of possible winners in the poll"),
         default=1,
+    )
+    random_in_tiebreaks = colander.SchemaNode(
+        colander.Bool(),
+        title=_('Allow random in tiebreaks'),
+        description=_('stv_random_tiebreak_description',
+                      default='Tiebreaks are unusual in real polls. '
+                              'Disabling this can sometimes lead to an incomplete results.'),
+        default=True,
     )
 
 

@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from BTrees.OOBTree import OOBTree
 from pyramid.renderers import render
+from stvpoll import STVPollBase
 from stvpoll.cpo_stv import CPO_STV
 from stvpoll.exceptions import STVException
 from stvpoll.scottish_stv import ScottishSTV
@@ -13,7 +16,7 @@ from voteit.stv.schemas import SettingsSchema
 
 class BaseSTVPoll(PollPlugin):
     template_name = None
-    method = None
+    method = STVPollBase
     multiple_winners = True
 
     def get_settings_schema(self):
@@ -34,7 +37,12 @@ class BaseSTVPoll(PollPlugin):
     def handle_close(self):
         ballots = self.format_ballots()
         winners = self.context.poll_settings.get('winners', 1)
-        method = self.method(seats=winners, candidates=self.context.proposals)
+        random_tiebreak = self.context.poll_settings.get('random_in_tiebreaks', True)
+        method = self.method(
+            seats=winners,
+            candidates=self.context.proposals,
+            random_in_tiebreaks=random_tiebreak,
+        )
         for ballot in ballots:
             method.add_ballot(ballot['ballot'], ballot['count'])
 
