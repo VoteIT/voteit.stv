@@ -28,8 +28,8 @@ class ProposalOrderingWidget(deform.widget.Widget):
             cstruct = ()
         readonly = kw.get('readonly', self.readonly)
         proposals = kw.get('proposals', self.proposals)
-        kw['prop_dict'] = prop_dict = self.as_dict(proposals)
-        kw['pool'] = set(prop_dict.keys()) - set(cstruct)
+        kw['prop_dict'] = dict([(x.uid, x) for x in proposals])
+        kw['pool'] = [x.uid for x in proposals if x.uid not in cstruct]
         kw['trunc'] = strip_and_truncate
         template = readonly and self.readonly_template or self.template
         tmpl_values = self.get_template_values(field, cstruct, kw)
@@ -41,9 +41,6 @@ class ProposalOrderingWidget(deform.widget.Widget):
         if isinstance(pstruct, string_types):
             return (pstruct,)
         return tuple(pstruct)
-
-    def as_dict(self, proposals):
-        return dict([(x.uid, x) for x in proposals])
 
 
 @colander.deferred
