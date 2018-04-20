@@ -20,7 +20,7 @@ class SettingsSchema(colander.Schema):
 
 class ProposalOrderingWidget(deform.widget.Widget):
     template = 'sorting'
-    readonly_template = 'sorting' #FIXME
+    readonly_template = 'sorting_readonly'
     proposals = {}
 
     def serialize(self, field, cstruct, **kw):
