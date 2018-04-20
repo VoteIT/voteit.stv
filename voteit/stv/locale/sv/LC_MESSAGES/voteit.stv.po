@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Swedish (VoteIT)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-20 14:27+0200\n"
-"PO-Revision-Date: 2018-03-20 17:31+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2018-04-20 12:30+0000\n"
+"Last-Translator: Weblate Admin <admin@example.com>\n"
 "Language-Team: Swedish <http://example.com/projects/voteit/voteit-stv/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Weblate 2.16\n"
 
 #: voteit/stv/models.py:103
 msgid "Scottish STV (Single Transferable Vote)"
@@ -111,9 +111,8 @@ msgid "stv_config_winners_description"
 msgstr "Antal möjliga vinnare i omröstningen"
 
 #: voteit/stv/schemas.py:23
-#, fuzzy
 msgid "Allow random in tiebreaks"
-msgstr "Slumpmässig utslagsröst"
+msgstr "Tillåt slumpmässig utslagsröst"
 
 # Default: Numbers of possible winners in the poll
 # Default: Randomization was used to resolve ties.
@@ -121,9 +120,10 @@ msgstr "Slumpmässig utslagsröst"
 #. Default: Tiebreaks are unusual in real polls. Disabling this can sometimes
 #. lead to an incomplete results.
 #: voteit/stv/schemas.py:24
-#, fuzzy
 msgid "stv_config_random_tiebreak_description"
-msgstr "Slumpmässig utslagsröst har använts."
+msgstr ""
+"Oavgjort är ovanligt i riktiga omröstningar. Att stänga av slumpmässig "
+"utslagsröst kan ibland leda till ett ofullständigt resultat."
 
 #: voteit/stv/schemas.py:71
 msgid "Proposals"
