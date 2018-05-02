@@ -3,3 +3,12 @@
     background-color: #eee;
     padding: 3px !important;
 }
+
+.sortable-widget .list-group-item {
+    overflow: auto;
+    word-break: break-all;
+}
+
+.sortable-widget .list-group-item .badge {
+    margin-top: 5px;
+}
