@@ -41,6 +41,7 @@ class ProposalOrderingWidget(deform.widget.Widget):
         kw['prop_dict'] = dict([(x.uid, x) for x in proposals])
         kw['pool'] = [x.uid for x in proposals if x.uid not in cstruct]
         kw['trunc'] = strip_and_truncate
+        kw['request'] = self.request
         template = readonly and self.readonly_template or self.template
         tmpl_values = self.get_template_values(field, cstruct, kw)
         return field.renderer(template, **tmpl_values)
@@ -56,7 +57,11 @@ class ProposalOrderingWidget(deform.widget.Widget):
 @colander.deferred
 def proposals_ordering_widget(node, kw):
     context = kw['context']
-    return ProposalOrderingWidget(proposals = context.get_proposal_objects())
+    request = kw['request']
+    return ProposalOrderingWidget(
+        request=request,
+        proposals=context.get_proposal_objects(),
+    )
 
 
 #The schema will be populated in the stv poll plugin
