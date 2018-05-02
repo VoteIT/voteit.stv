@@ -6,7 +6,7 @@
 
 .sortable-widget .list-group-item {
     overflow: auto;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .sortable-widget .list-group-item .badge {
