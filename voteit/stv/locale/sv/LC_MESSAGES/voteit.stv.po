@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Swedish (VoteIT)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-26 14:03+0200\n"
-"PO-Revision-Date: 2018-05-26 14:03+0200\n"
+"POT-Creation-Date: 2018-05-26 14:14+0200\n"
+"PO-Revision-Date: 2018-05-26 14:16+0200\n"
 "Last-Translator: Weblate Admin <admin@example.com>\n"
 "Language-Team: Swedish <http://example.com/projects/voteit/voteit-stv/sv/>\n"
 "Language: sv\n"
@@ -240,22 +240,23 @@ msgstr ""
 "Metoden säkerställer ett proportionerligt val, och minimerar möjligheterna "
 "till taktikröstande."
 
-#. Default: Drag from left to right to select. Put the most preferred on top.
-#: voteit/stv/templates/deform/sorting_readonly.pt:6
-#: voteit/stv/templates/deform/sorting.pt:6
-msgid "sorting_widget_help"
-msgstr ""
-"Dra från vänster till höger för att välja. Lägg de du föredrar mest överst."
-
-#: voteit/stv/templates/deform/sorting_readonly.pt:11
+#: voteit/stv/templates/deform/sorting_readonly.pt:8
 msgid "Selected"
 msgstr "Valda"
 
-#: voteit/stv/templates/deform/sorting_readonly.pt:27
-#: voteit/stv/templates/deform/sorting.pt:26
+#: voteit/stv/templates/deform/sorting_readonly.pt:24
+#: voteit/stv/templates/deform/sorting.pt:27
 msgid "Pool"
 msgstr "Pool"
 
-#: voteit/stv/templates/deform/sorting.pt:11
+#. Default: Drag from pool to the area under selected. Put the most preferred
+#. on top. You don't have to sort all if you don't want to.
+#: voteit/stv/templates/deform/sorting.pt:6
+msgid "sorting_widget_help"
+msgstr ""
+"Dra förslagen från poolen till området under valda. Lägg de du föredrar mest "
+"överst. Du behöver inte sortera alla om du inte vill."
+
+#: voteit/stv/templates/deform/sorting.pt:12
 msgid "Selected (drag here)"
 msgstr "Valda (dra hit)"

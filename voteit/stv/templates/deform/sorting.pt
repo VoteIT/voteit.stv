@@ -4,7 +4,8 @@
              style style|field.widget.style;
              oid oid|field.oid;">
   <p i18n:translate="sorting_widget_help">
-    Drag from left to right to select. Put the most preferred on top.
+    Drag from pool to the area under selected. Put the most preferred on top.
+    You don't have to sort all if you don't want to.
   </p>
   <div class="row">
     <div  class="col-sm-6">

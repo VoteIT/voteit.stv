@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE 1.0\n"
-"POT-Creation-Date: 2018-05-26 14:03+0200\n"
+"POT-Creation-Date: 2018-05-26 14:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,21 +159,21 @@ msgstr ""
 msgid "cpo_stv_result_explanation"
 msgstr ""
 
-#. Default: Drag from left to right to select. Put the most preferred on top.
-#: ./voteit/stv/templates/deform/sorting_readonly.pt:6
+#: ./voteit/stv/templates/deform/sorting_readonly.pt:8
+msgid "Selected"
+msgstr ""
+
+#: ./voteit/stv/templates/deform/sorting_readonly.pt:24
+#: ./voteit/stv/templates/deform/sorting.pt:27
+msgid "Pool"
+msgstr ""
+
+#. Default: Drag from pool to the area under selected. Put the most preferred
+#. on top. You don't have to sort all if you don't want to.
 #: ./voteit/stv/templates/deform/sorting.pt:6
 msgid "sorting_widget_help"
 msgstr ""
 
-#: ./voteit/stv/templates/deform/sorting_readonly.pt:11
-msgid "Selected"
-msgstr ""
-
-#: ./voteit/stv/templates/deform/sorting_readonly.pt:27
-#: ./voteit/stv/templates/deform/sorting.pt:26
-msgid "Pool"
-msgstr ""
-
-#: ./voteit/stv/templates/deform/sorting.pt:11
+#: ./voteit/stv/templates/deform/sorting.pt:12
 msgid "Selected (drag here)"
 msgstr ""
