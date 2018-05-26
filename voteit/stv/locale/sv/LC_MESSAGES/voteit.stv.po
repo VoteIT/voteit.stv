@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Swedish (VoteIT)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-20 14:27+0200\n"
-"PO-Revision-Date: 2018-04-20 12:30+0000\n"
+"POT-Creation-Date: 2018-05-26 14:03+0200\n"
+"PO-Revision-Date: 2018-05-26 14:03+0200\n"
 "Last-Translator: Weblate Admin <admin@example.com>\n"
 "Language-Team: Swedish <http://example.com/projects/voteit/voteit-stv/sv/>\n"
 "Language: sv\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: voteit/stv/models.py:103
 msgid "Scottish STV (Single Transferable Vote)"
@@ -125,14 +125,100 @@ msgstr ""
 "Oavgjort är ovanligt i riktiga omröstningar. Att stänga av slumpmässig "
 "utslagsröst kan ibland leda till ett ofullständigt resultat."
 
-#: voteit/stv/schemas.py:71
+#: voteit/stv/schemas.py:76
 msgid "Proposals"
 msgstr "Förslag"
 
-#: voteit/stv/templates/result_cpo_stv.pt:5
 #: voteit/stv/templates/result_scottish_stv.pt:5
+#: voteit/stv/templates/result_cpo_stv.pt:5
 msgid "Results of ${title}"
 msgstr "Resultat av ${title}"
+
+# Default: Scottish STV-polls are designed to achieve a proportional result
+# with a minimum of wasted votes. Votes from eliminated proposals or surplus
+# from elected proposals are transferred in the order of the ballots.
+# Default: Scottish STV-polls are designed to achieve a proportional result
+# with a minimum of wasted votes. Votes from eliminated proposals or surplus
+# from elected proposals are transferred in the order of the ballots.
+#. Default: Scottish STV-polls are designed to achieve a proportional result
+#. with a minimum of wasted votes. Votes from eliminated proposals or surplus
+#. from elected proposals are transferred in the order of the ballots.
+#: voteit/stv/templates/result_scottish_stv.pt:12
+msgid "scottish_stv_result_explanation"
+msgstr ""
+"Skotsk STV är utformad för att uppnå ett proportionerligt valresultat med "
+"ett minimum av bortkastade röster. Röster på uteslutna förslag eller "
+"överskott från valda förslag förs över enligt ordningen på röstsedlarna."
+
+#: voteit/stv/templates/result_scottish_stv.pt:22
+#: voteit/stv/templates/result_cpo_stv.pt:36
+msgid "Approved"
+msgstr "Bifallen"
+
+#: voteit/stv/templates/result_scottish_stv.pt:34
+#: voteit/stv/templates/result_cpo_stv.pt:51
+msgid "Denied"
+msgstr "Avslaget"
+
+# Default: Numbers of possible winners in the poll
+# Default: Randomization was used to resolve ties.
+# Default: Randomization was used to resolve ties.
+#. Default: Randomization was used to resolve ties.
+#: voteit/stv/templates/result_scottish_stv.pt:46
+#: voteit/stv/templates/result_cpo_stv.pt:19
+msgid "stv_tied_description"
+msgstr "Slumpmässig utslagsröst har använts."
+
+# Default: Numbers of possible winners in the poll
+# Default: Result is incomplete, due to unresolved ties.
+# Default: Result is incomplete, due to unresolved ties.
+#. Default: Result is incomplete, due to unresolved ties.
+#: voteit/stv/templates/result_scottish_stv.pt:50
+#: voteit/stv/templates/result_cpo_stv.pt:23
+msgid "stv_incomplete_description"
+msgstr "Resultatet är ofullständigt på grund av oavgjort."
+
+#: voteit/stv/templates/result_scottish_stv.pt:61
+#: voteit/stv/templates/result_cpo_stv.pt:63
+msgid "Detailed result"
+msgstr "Detaljerat resultat"
+
+#: voteit/stv/templates/result_scottish_stv.pt:68
+msgid "Round"
+msgstr "Runda"
+
+#: voteit/stv/templates/result_scottish_stv.pt:69
+msgid "Result"
+msgstr "Resultat"
+
+#: voteit/stv/templates/result_scottish_stv.pt:70
+msgid "Method"
+msgstr "Metod"
+
+#: voteit/stv/templates/result_scottish_stv.pt:85
+#: voteit/stv/templates/result_cpo_stv.pt:70
+msgid "Complete result"
+msgstr "Komplett resultat"
+
+#: voteit/stv/templates/result_scottish_stv.pt:87
+#: voteit/stv/templates/result_scottish_stv.pt:94
+msgid "Yes"
+msgstr "Ja"
+
+#: voteit/stv/templates/result_scottish_stv.pt:88
+#: voteit/stv/templates/result_scottish_stv.pt:95
+msgid "No"
+msgstr "Nej"
+
+#: voteit/stv/templates/result_scottish_stv.pt:92
+#: voteit/stv/templates/result_cpo_stv.pt:74
+msgid "Random in tiebreak"
+msgstr "Slumpmässig utslagsröst"
+
+#: voteit/stv/templates/result_scottish_stv.pt:99
+#: voteit/stv/templates/result_cpo_stv.pt:78
+msgid "Quota (votes to be elected)"
+msgstr "Kvot (röster för att bli vald)"
 
 # Default: Comparison of Pairs of Outcomes STV-polls compare all possible
 # outcomes to each other, comparing every possible combination of winners to
@@ -154,92 +240,6 @@ msgstr ""
 "Metoden säkerställer ett proportionerligt val, och minimerar möjligheterna "
 "till taktikröstande."
 
-# Default: Numbers of possible winners in the poll
-# Default: Randomization was used to resolve ties.
-# Default: Randomization was used to resolve ties.
-#. Default: Randomization was used to resolve ties.
-#: voteit/stv/templates/result_cpo_stv.pt:19
-#: voteit/stv/templates/result_scottish_stv.pt:46
-msgid "stv_tied_description"
-msgstr "Slumpmässig utslagsröst har använts."
-
-# Default: Numbers of possible winners in the poll
-# Default: Result is incomplete, due to unresolved ties.
-# Default: Result is incomplete, due to unresolved ties.
-#. Default: Result is incomplete, due to unresolved ties.
-#: voteit/stv/templates/result_cpo_stv.pt:23
-#: voteit/stv/templates/result_scottish_stv.pt:50
-msgid "stv_incomplete_description"
-msgstr "Resultatet är ofullständigt på grund av oavgjort."
-
-#: voteit/stv/templates/result_cpo_stv.pt:36
-#: voteit/stv/templates/result_scottish_stv.pt:22
-msgid "Approved"
-msgstr "Bifallen"
-
-#: voteit/stv/templates/result_cpo_stv.pt:51
-#: voteit/stv/templates/result_scottish_stv.pt:34
-msgid "Denied"
-msgstr "Avslaget"
-
-#: voteit/stv/templates/result_cpo_stv.pt:63
-#: voteit/stv/templates/result_scottish_stv.pt:61
-msgid "Detailed result"
-msgstr "Detaljerat resultat"
-
-#: voteit/stv/templates/result_cpo_stv.pt:70
-#: voteit/stv/templates/result_scottish_stv.pt:85
-msgid "Complete result"
-msgstr "Komplett resultat"
-
-#: voteit/stv/templates/result_cpo_stv.pt:74
-#: voteit/stv/templates/result_scottish_stv.pt:92
-msgid "Random in tiebreak"
-msgstr "Slumpmässig utslagsröst"
-
-#: voteit/stv/templates/result_cpo_stv.pt:78
-#: voteit/stv/templates/result_scottish_stv.pt:99
-msgid "Quota (votes to be elected)"
-msgstr "Kvot (röster för att bli vald)"
-
-# Default: Scottish STV-polls are designed to achieve a proportional result
-# with a minimum of wasted votes. Votes from eliminated proposals or surplus
-# from elected proposals are transferred in the order of the ballots.
-# Default: Scottish STV-polls are designed to achieve a proportional result
-# with a minimum of wasted votes. Votes from eliminated proposals or surplus
-# from elected proposals are transferred in the order of the ballots.
-#. Default: Scottish STV-polls are designed to achieve a proportional result
-#. with a minimum of wasted votes. Votes from eliminated proposals or surplus
-#. from elected proposals are transferred in the order of the ballots.
-#: voteit/stv/templates/result_scottish_stv.pt:12
-msgid "scottish_stv_result_explanation"
-msgstr ""
-"Skotsk STV är utformad för att uppnå ett proportionerligt valresultat med "
-"ett minimum av bortkastade röster. Röster på uteslutna förslag eller "
-"överskott från valda förslag förs över enligt ordningen på röstsedlarna."
-
-#: voteit/stv/templates/result_scottish_stv.pt:68
-msgid "Round"
-msgstr "Runda"
-
-#: voteit/stv/templates/result_scottish_stv.pt:69
-msgid "Result"
-msgstr "Resultat"
-
-#: voteit/stv/templates/result_scottish_stv.pt:70
-msgid "Method"
-msgstr "Metod"
-
-#: voteit/stv/templates/result_scottish_stv.pt:87
-#: voteit/stv/templates/result_scottish_stv.pt:94
-msgid "Yes"
-msgstr "Ja"
-
-#: voteit/stv/templates/result_scottish_stv.pt:88
-#: voteit/stv/templates/result_scottish_stv.pt:95
-msgid "No"
-msgstr "Nej"
-
 #. Default: Drag from left to right to select. Put the most preferred on top.
 #: voteit/stv/templates/deform/sorting_readonly.pt:6
 #: voteit/stv/templates/deform/sorting.pt:6
@@ -248,11 +248,14 @@ msgstr ""
 "Dra från vänster till höger för att välja. Lägg de du föredrar mest överst."
 
 #: voteit/stv/templates/deform/sorting_readonly.pt:11
-#: voteit/stv/templates/deform/sorting.pt:11
 msgid "Selected"
 msgstr "Valda"
 
-#: voteit/stv/templates/deform/sorting_readonly.pt:26
+#: voteit/stv/templates/deform/sorting_readonly.pt:27
 #: voteit/stv/templates/deform/sorting.pt:26
 msgid "Pool"
 msgstr "Pool"
+
+#: voteit/stv/templates/deform/sorting.pt:11
+msgid "Selected (drag here)"
+msgstr "Valda (dra hit)"

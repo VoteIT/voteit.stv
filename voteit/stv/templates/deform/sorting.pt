@@ -8,13 +8,12 @@
   </p>
   <div class="row">
     <div  class="col-sm-6">
-      <tal:ts i18n:translate="">Selected</tal:ts>
-
+      <tal:ts i18n:translate="">Selected (drag here)</tal:ts>
       ${field.start_sequence()}
       <ul id="${oid}-sortable-picked" class="list-group ${oid}-connectedSortable sortable-container">
         <li class="list-group-item" tal:repeat="choice cstruct">
           <tal:def tal:define="prop prop_dict[choice];">
-            <tal:creator replace="structure request.creators_info(prop.creators)"></tal:creator>
+            ${structure: request.creators_info(prop.creators, portrait=False, no_tag=True)}
             ${structure: trunc(prop.text)} <span class="badge">#${prop.aid}</span>
             <input type="hidden" name="selected" id="${oid}-${choice}" value="${choice}" />
           </tal:def>
@@ -29,7 +28,7 @@
       <ul id="${oid}-sortable-pool" class="list-group ${oid}-connectedSortable sortable-container">
         <li class="list-group-item" tal:repeat="choice pool">
           <tal:def tal:define="prop prop_dict[choice]">
-            <tal:creator replace="structure request.creators_info(prop.creators)"></tal:creator>
+            ${structure: request.creators_info(prop.creators, portrait=False, no_tag=True)}
             ${structure: trunc(prop.text)} <span class="badge">#${prop.aid}</span>
             <input type="hidden" name="pool-item" id="${oid}-${choice}" value="${choice}" />
           </tal:def>

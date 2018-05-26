@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE 1.0\n"
-"POT-Creation-Date: 2018-04-20 14:27+0200\n"
+"POT-Creation-Date: 2018-05-26 14:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,63 +71,13 @@ msgstr ""
 msgid "stv_config_random_tiebreak_description"
 msgstr ""
 
-#: ./voteit/stv/schemas.py:71
+#: ./voteit/stv/schemas.py:76
 msgid "Proposals"
 msgstr ""
 
-#: ./voteit/stv/templates/result_cpo_stv.pt:5
 #: ./voteit/stv/templates/result_scottish_stv.pt:5
+#: ./voteit/stv/templates/result_cpo_stv.pt:5
 msgid "Results of ${title}"
-msgstr ""
-
-#. Default: Comparison of Pairs of Outcomes STV-polls compare all possible
-#. outcomes to each other, comparing every possible combination of winners to
-#. every other possible combination. The method ensures a proportional
-#. election, while minimizing tactical voting.
-#: ./voteit/stv/templates/result_cpo_stv.pt:12
-msgid "cpo_stv_result_explanation"
-msgstr ""
-
-#. Default: Randomization was used to resolve ties.
-#: ./voteit/stv/templates/result_cpo_stv.pt:19
-#: ./voteit/stv/templates/result_scottish_stv.pt:46
-msgid "stv_tied_description"
-msgstr ""
-
-#. Default: Result is incomplete, due to unresolved ties.
-#: ./voteit/stv/templates/result_cpo_stv.pt:23
-#: ./voteit/stv/templates/result_scottish_stv.pt:50
-msgid "stv_incomplete_description"
-msgstr ""
-
-#: ./voteit/stv/templates/result_cpo_stv.pt:36
-#: ./voteit/stv/templates/result_scottish_stv.pt:22
-msgid "Approved"
-msgstr ""
-
-#: ./voteit/stv/templates/result_cpo_stv.pt:51
-#: ./voteit/stv/templates/result_scottish_stv.pt:34
-msgid "Denied"
-msgstr ""
-
-#: ./voteit/stv/templates/result_cpo_stv.pt:63
-#: ./voteit/stv/templates/result_scottish_stv.pt:61
-msgid "Detailed result"
-msgstr ""
-
-#: ./voteit/stv/templates/result_cpo_stv.pt:70
-#: ./voteit/stv/templates/result_scottish_stv.pt:85
-msgid "Complete result"
-msgstr ""
-
-#: ./voteit/stv/templates/result_cpo_stv.pt:74
-#: ./voteit/stv/templates/result_scottish_stv.pt:92
-msgid "Random in tiebreak"
-msgstr ""
-
-#: ./voteit/stv/templates/result_cpo_stv.pt:78
-#: ./voteit/stv/templates/result_scottish_stv.pt:99
-msgid "Quota (votes to be elected)"
 msgstr ""
 
 #. Default: Scottish STV-polls are designed to achieve a proportional result
@@ -135,6 +85,33 @@ msgstr ""
 #. from elected proposals are transferred in the order of the ballots.
 #: ./voteit/stv/templates/result_scottish_stv.pt:12
 msgid "scottish_stv_result_explanation"
+msgstr ""
+
+#: ./voteit/stv/templates/result_scottish_stv.pt:22
+#: ./voteit/stv/templates/result_cpo_stv.pt:36
+msgid "Approved"
+msgstr ""
+
+#: ./voteit/stv/templates/result_scottish_stv.pt:34
+#: ./voteit/stv/templates/result_cpo_stv.pt:51
+msgid "Denied"
+msgstr ""
+
+#. Default: Randomization was used to resolve ties.
+#: ./voteit/stv/templates/result_scottish_stv.pt:46
+#: ./voteit/stv/templates/result_cpo_stv.pt:19
+msgid "stv_tied_description"
+msgstr ""
+
+#. Default: Result is incomplete, due to unresolved ties.
+#: ./voteit/stv/templates/result_scottish_stv.pt:50
+#: ./voteit/stv/templates/result_cpo_stv.pt:23
+msgid "stv_incomplete_description"
+msgstr ""
+
+#: ./voteit/stv/templates/result_scottish_stv.pt:61
+#: ./voteit/stv/templates/result_cpo_stv.pt:63
+msgid "Detailed result"
 msgstr ""
 
 #: ./voteit/stv/templates/result_scottish_stv.pt:68
@@ -149,6 +126,11 @@ msgstr ""
 msgid "Method"
 msgstr ""
 
+#: ./voteit/stv/templates/result_scottish_stv.pt:85
+#: ./voteit/stv/templates/result_cpo_stv.pt:70
+msgid "Complete result"
+msgstr ""
+
 #: ./voteit/stv/templates/result_scottish_stv.pt:87
 #: ./voteit/stv/templates/result_scottish_stv.pt:94
 msgid "Yes"
@@ -159,6 +141,24 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+#: ./voteit/stv/templates/result_scottish_stv.pt:92
+#: ./voteit/stv/templates/result_cpo_stv.pt:74
+msgid "Random in tiebreak"
+msgstr ""
+
+#: ./voteit/stv/templates/result_scottish_stv.pt:99
+#: ./voteit/stv/templates/result_cpo_stv.pt:78
+msgid "Quota (votes to be elected)"
+msgstr ""
+
+#. Default: Comparison of Pairs of Outcomes STV-polls compare all possible
+#. outcomes to each other, comparing every possible combination of winners to
+#. every other possible combination. The method ensures a proportional
+#. election, while minimizing tactical voting.
+#: ./voteit/stv/templates/result_cpo_stv.pt:12
+msgid "cpo_stv_result_explanation"
+msgstr ""
+
 #. Default: Drag from left to right to select. Put the most preferred on top.
 #: ./voteit/stv/templates/deform/sorting_readonly.pt:6
 #: ./voteit/stv/templates/deform/sorting.pt:6
@@ -166,11 +166,14 @@ msgid "sorting_widget_help"
 msgstr ""
 
 #: ./voteit/stv/templates/deform/sorting_readonly.pt:11
-#: ./voteit/stv/templates/deform/sorting.pt:11
 msgid "Selected"
 msgstr ""
 
-#: ./voteit/stv/templates/deform/sorting_readonly.pt:26
+#: ./voteit/stv/templates/deform/sorting_readonly.pt:27
 #: ./voteit/stv/templates/deform/sorting.pt:26
 msgid "Pool"
+msgstr ""
+
+#: ./voteit/stv/templates/deform/sorting.pt:11
+msgid "Selected (drag here)"
 msgstr ""
