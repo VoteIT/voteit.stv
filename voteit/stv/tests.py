@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 from unittest import TestCase
 
-from arche.views.base import BaseView
 from pyramid import testing
 from pyramid.config import Configurator
+from pyramid.httpexceptions import HTTPForbidden
 
 from voteit.core.models.agenda_item import AgendaItem
 from voteit.core.models.interfaces import IPollPlugin
@@ -94,6 +94,19 @@ class STVTests(TestCase):
         self.assertEqual(set(poll.poll_result['winners']), {'Alice', 'Bob', 'Chris'})
         self.assertEqual(poll.poll_result['complete'], True)
 
+    def test_block_start_with_same_amount_winners_as_proposals(self):
+        poll = _setup_poll_fixture(self.config)
+        poll.poll_plugin = 'scottish_stv'
+        poll.poll_settings['winners'] = 3
+        self.assertRaises(HTTPForbidden, unrestricted_wf_transition_to, poll, 'ongoing')
+
+    def test_block_start_with_less_than_3_props(self):
+        poll = _setup_poll_fixture(self.config)
+        poll.proposals = ('p1uid', 'p2uid')
+        poll.poll_plugin = 'scottish_stv'
+        # poll.poll_settings['winners'] = 3
+        self.assertRaises(HTTPForbidden, unrestricted_wf_transition_to, poll, 'ongoing')
+
 
 def _setup_poll_fixture(config):
     # type: (Configurator) -> Poll
@@ -128,7 +141,6 @@ def _setup_poll_fixture(config):
     poll.proposal_uids = (p1.uid, p2.uid, p3.uid)
     #Set poll as ongoing
     unrestricted_wf_transition_to(poll, 'upcoming')
-    unrestricted_wf_transition_to(poll, 'ongoing')
     return poll
 
 def _add_votes(poll):

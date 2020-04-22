@@ -13,5 +13,3 @@ CPO STV works in most polls, but is deactivated. The reason is that
 polls with a huge amount of possible combination of winners takes
 too long to calculate. It needs a limit. However, current VoteIT
 voting process is not built to filter out voting methods.
-
-Hint: Use CPOSTVPoll.check_applicable(proposals, winners)

@@ -2,19 +2,20 @@
 from __future__ import unicode_literals
 
 from BTrees.OOBTree import OOBTree
+from pyramid.httpexceptions import HTTPForbidden
 from pyramid.renderers import render
 from stvpoll import STVPollBase
 from stvpoll.cpo_stv import CPO_STV
 from stvpoll.exceptions import STVException
 from stvpoll.scottish_stv import ScottishSTV
-from voteit.core.models.poll_plugin import PollPlugin
+from voteit.core.models import poll_plugin
 
 from voteit.stv import _
 from voteit.stv.schemas import STVPollSchema
 from voteit.stv.schemas import SettingsSchema
 
 
-class BaseSTVPoll(PollPlugin):
+class BaseSTVPoll(poll_plugin.PollPlugin):
     template_name = None
     method = STVPollBase
     multiple_winners = True
@@ -113,7 +114,29 @@ class ScottishSTVPoll(BaseSTVPoll):
     template_name = 'voteit.stv:templates/result_scottish_stv.pt'
 
     multiple_winners = True
-    priority = 2
+    priority = 3
+    recommended_for = _("Board elections with a proportional result or proportionally selecting proposals.")
+
+    criteria = (
+        poll_plugin.MajorityWinner(
+            False,
+            comment=_("Incompatible with proportional.")
+        ),
+        poll_plugin.CondorcetWinner(
+            False,
+            comment=_("Incompatible with proportional.")
+        ),
+        poll_plugin.Proportional(True),
+    )
+
+    def handle_start(self, request):
+        if len(self.context.proposals) < 3:
+            raise HTTPForbidden(_("This is only usable for 3 or more proposals"))
+        winners = self.context.poll_settings.get('winners', None)
+        if winners is None:
+            raise HTTPForbidden(_("No winners?"))
+        if len(self.context.proposals) == winners:
+            raise HTTPForbidden(_("Same amount of winners as proposals. This method can't be used for sorting."))
 
 
 class CPOSTVPoll(BaseSTVPoll):
