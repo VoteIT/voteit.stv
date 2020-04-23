@@ -19,6 +19,7 @@ class BaseSTVPoll(poll_plugin.PollPlugin):
     template_name = None
     method = STVPollBase
     multiple_winners = True
+    proposals_min = 3
 
     def get_settings_schema(self):
         return SettingsSchema()
